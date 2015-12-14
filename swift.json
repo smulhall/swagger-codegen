@@ -1,0 +1,10 @@
+{
+  "projectName":"CBSDKRest",
+  "podSummary":"Gifting Platform Rest SDK",
+  "podSource":"{ :git => 'https://github.com/cleverbug/ios-cb-sdk-rest.git', :tag => s.version }",
+  "podAuthors":"{ 'Cleverbug Ltd.' => 'dev@cleverbug.com' }",
+  "podHomepage":"https://cleverbug.com",
+  "podLicense":"'Commercial'",
+  "artifactId":"CBSDK",
+  "artifactVersion":"1.0.0"
+}
