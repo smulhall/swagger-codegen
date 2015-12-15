@@ -11,6 +11,7 @@ import com.sun.jersey.multipart.FormDataParam;
 {{#imports}}import {{import}};
 {{/imports}}
 
+import javax.inject.Inject;
 import java.util.List;
 import {{package}}.NotFoundException;
 
@@ -31,7 +32,8 @@ import javax.ws.rs.*;
 {{>generatedAnnotation}}
 {{#operations}}
 public class {{classname}}  {
-   private final {{classname}}Service delegate = {{classname}}ServiceFactory.get{{classname}}();
+    @Inject
+    private {{classname}}Service delegate;
 
 {{#operation}}
     @{{httpMethod}}
