@@ -99,6 +99,13 @@ class AlamofireRequestBuilder<T>: RequestBuilder<T> {
             }
 
             completion(response: nil, error: NSError(domain: "localhost", code: 500, userInfo: ["reason": "unreacheable code"]))
+        
+        }.responseString() { response in
+            // Output debug information, if needed
+            if Int(NSProcessInfo.processInfo().environment["CBSDKDebugEnabled"] ?? "0") == 1 {
+                print("{CBSDKRest} Request: ", request.debugDescription)
+                print("{CBSDKRest} Response: ", response.debugDescription)
+            }
         }
     }
 
