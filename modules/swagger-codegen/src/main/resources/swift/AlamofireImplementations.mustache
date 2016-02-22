@@ -91,7 +91,7 @@ class AlamofireRequestBuilder<T>: RequestBuilder<T> {
             }
 
             if () is T {
-                completion(response: Response(response: response.response!, body: () as! T), error: nil)
+                completion(response: Response(response: response.response!, body: () as? T), error: nil)
                 return
             }
             if let json: AnyObject = response.result.value {
@@ -104,14 +104,14 @@ class AlamofireRequestBuilder<T>: RequestBuilder<T> {
                     ])
                     completion(response: nil, error: error)
                 } else {
-                    let body = Decoders.decode(clazz: T.self, source: json)
+                    let body = Decoders.decodeOptional(clazz: T.self, source: json)
                     completion(response: Response(response: response.response!, body: body), error: nil)
                 }
                 return
             } else if "" is T {
                 // swagger-parser currently doesn't support void, which will be fixed in future swagger-parser release
                 // https://github.com/swagger-api/swagger-parser/pull/34
-                completion(response: Response(response: response.response!, body: "" as! T), error: nil)
+                completion(response: Response(response: response.response!, body: "" as? T), error: nil)
                 return
             }
 
