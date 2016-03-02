@@ -24,7 +24,7 @@ public class {{classname}}: JSONEncodable {
     public init() {}
 
     // MARK: JSONEncodable
-    func encodeToJSON() -> AnyObject {
+    public func encodeToJSON() -> AnyObject {
         var nillableDictionary = [String:AnyObject?](){{#vars}}{{#isNotContainer}}{{#isPrimitiveType}}{{^isEnum}}
         nillableDictionary["{{name}}"] = self.{{name}}{{/isEnum}}{{/isPrimitiveType}}{{#isEnum}}
         nillableDictionary["{{name}}"] = self.{{name}}{{^unwrapRequired}}?{{/unwrapRequired}}{{#unwrapRequired}}{{^required}}?{{/required}}{{/unwrapRequired}}.rawValue{{/isEnum}}{{^isPrimitiveType}}
