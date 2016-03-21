@@ -10,7 +10,7 @@ import Foundation
 {{#description}}
 
 /** {{description}} */{{/description}}
-public class {{classname}}: JSONEncodable {
+@objc public class {{classname}}: NSObject, JSONEncodable {
 {{#vars}}{{#isEnum}}
     public enum {{datatypeWithEnum}}: String { {{#allowableValues}}{{#values}}
         case {{enum}} = "{{raw}}"{{/values}}{{/allowableValues}}
@@ -20,8 +20,6 @@ public class {{classname}}: JSONEncodable {
     {{/description}}public var {{name}}: {{{datatypeWithEnum}}}{{^unwrapRequired}}?{{/unwrapRequired}}{{#unwrapRequired}}{{^required}}?{{/required}}{{#required}}!{{/required}}{{/unwrapRequired}}{{#defaultValue}} = {{{defaultValue}}}{{/defaultValue}}{{/isEnum}}{{^isEnum}}{{#description}}/** {{description}} */
     {{/description}}public var {{name}}: {{{datatype}}}{{^unwrapRequired}}?{{/unwrapRequired}}{{#unwrapRequired}}{{^required}}?{{/required}}{{#required}}!{{/required}}{{/unwrapRequired}}{{#defaultValue}} = {{{defaultValue}}}{{/defaultValue}}{{/isEnum}}
     {{/vars}}
-
-    public init() {}
 
     // MARK: JSONEncodable
     public func encodeToJSON() -> AnyObject {
