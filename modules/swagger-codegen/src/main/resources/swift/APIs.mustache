@@ -11,6 +11,29 @@ public class {{projectName}}API {
     public static var credential: NSURLCredential?
     public static var customHeaders: [String:String] = [:]  
     static var requestBuilderFactory: RequestBuilderFactory = AlamofireRequestBuilderFactory()
+
+    /**
+     Uploads file to server. Note: that's our custom method, Swagger has issues with generated uploading methods.
+     
+     - parameter user:
+     - parameter file:
+     
+     - returns:
+     */
+    public class func uploadFile(user: String, file: NSURL) -> RequestBuilder<UploadResponse> {
+        let path = "/upload"
+        let URLString = CBSDKRestAPI.basePath + path
+        
+        let nillableParameters: [String:AnyObject?] = [
+            "user": user,
+            "file": file
+        ]
+        let parameters = APIHelper.rejectNil(nillableParameters)
+        
+        let requestBuilder: RequestBuilder<UploadResponse>.Type = CBSDKRestAPI.requestBuilderFactory.getBuilder()
+        
+        return requestBuilder.init(method: "POST", URLString: URLString, parameters: parameters, isBody: false)
+    }
 }
 
 public class APIBase {
