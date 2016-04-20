@@ -1,0 +1,9 @@
+{
+  "groupId":"com.cb",
+  "artifactId":"render-client",
+  "artifactVersion":"1.0.0",
+  "modelPackage":"com.cb.model",
+  "apiPackage":"com.cb.api",
+  "invokerPackage":"com.cb.client",
+  "library":"retrofit2"
+}

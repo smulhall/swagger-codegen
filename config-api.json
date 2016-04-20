@@ -1,0 +1,9 @@
+{
+  "groupId":"com.cb.api",
+  "artifactId":"api-client",
+  "artifactVersion":"1.0.0",
+  "modelPackage":"com.cb.api.model",
+  "apiPackage":"com.cb.api.services",
+  "invokerPackage":"com.cb.api.client",
+  "library":"jersey2"
+}
